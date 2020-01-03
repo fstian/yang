@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "aa014aed9c68a82b343ed608896201f2",
+    "identityHash": "23ff71d369a7e4014bb033e0f992b711",
     "entities": [
       {
         "tableName": "Account",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT, `dept` TEXT, `account` TEXT, `pwd` TEXT, `des` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT, `dept` TEXT, `account` TEXT, `pwd` TEXT, `des` TEXT, `uuid` TEXT)",
         "fields": [
           {
             "fieldPath": "id_",
@@ -43,6 +43,12 @@
             "columnName": "des",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "uuid",
+            "columnName": "uuid",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -58,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'aa014aed9c68a82b343ed608896201f2')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '23ff71d369a7e4014bb033e0f992b711')"
     ]
   }
 }

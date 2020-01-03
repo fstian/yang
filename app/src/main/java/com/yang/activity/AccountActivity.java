@@ -30,7 +30,7 @@ public class AccountActivity extends BaseActivity {
 
 
     @Override
-    public int getToolbarId() {
+    public int getToolbarMenuId() {
         return R.menu.toolbar_menu;
     }
 
@@ -45,7 +45,7 @@ public class AccountActivity extends BaseActivity {
         mToolbar.setOnMenuItemClickListener(mOnMenuItemClickListener);
         mAccountViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(AccountViewModel.class);
 
-        mAccountViewModel.insert();
+
 
     }
 

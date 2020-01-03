@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 @Dao
 public interface AccountDao {
@@ -27,5 +28,7 @@ public interface AccountDao {
     LiveData<List<Account>> queryAll2Livedata();
 
 
+    @Update()
+    void updateByUuid(Account uuid);
 
 }

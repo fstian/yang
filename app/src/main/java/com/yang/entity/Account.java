@@ -4,19 +4,11 @@ package com.yang.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity()
 public class Account {
 
     @PrimaryKey(autoGenerate = true)
     private long id_;
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     private String type;
 
@@ -28,19 +20,33 @@ public class Account {
 
     private String des;
 
+    private String uuid;
 
 
-
-    public Account( String type, String dept, String account, String pwd, String des) {
+    public Account( String type, String dept, String account, String pwd, String des,String uuid) {
         this.type=type;
         this.dept = dept;
         this.account = account;
         this.pwd = pwd;
         this.des = des;
+        this.uuid=uuid;
+
     }
 
+    public String getUuid() {
+        return uuid;
+    }
 
-    public Account() {
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public long getId_() {
@@ -93,6 +99,7 @@ public class Account {
                 ", account='" + account + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", des='" + des + '\'' +
+                ", uuid='" + uuid + '\'' +
                 '}';
     }
 }

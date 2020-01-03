@@ -30,7 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        initToolBar(getToolbarId());
+        initToolBar(getToolbarMenuId());
 
         mCommonService = RetrofitManager.getRetrofitInstance().create(CommonService.class);
 
@@ -40,18 +40,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initData();
 
-    private void initToolBar(int toolbarId) {
+    private void initToolBar(int getToolbarMenuId) {
         setSupportActionBar(mToolbar);
-        mToolbar.inflateMenu(toolbarId);
+        if(getToolbarMenuId!=0){
+            mToolbar.inflateMenu(getToolbarMenuId);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(getToolbarId(),menu);
+        if(getToolbarMenuId()!=0){
+            getMenuInflater().inflate(getToolbarMenuId(),menu);
+        }
         return true;
     }
 
     public abstract int getLayoutId();
 
-    public abstract int getToolbarId();
+    public abstract int getToolbarMenuId();
 }
