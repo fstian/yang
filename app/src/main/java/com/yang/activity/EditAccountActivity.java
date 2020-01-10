@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yang.R;
+import com.R;
 import com.yang.adapter.EditAccountAdapter;
 import com.yang.entity.Account;
 import com.yang.entity.AccountItem;
@@ -18,14 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
-public class EditAcountActivity extends BaseActivity {
+public class EditAccountActivity extends BaseActivity {
 
     @BindView(R.id.add_recycler)
     RecyclerView mRecyclerView;
@@ -132,7 +131,7 @@ public class EditAcountActivity extends BaseActivity {
             String des = mItems.get(3).getValue();
 
             if (TextUtils.isEmpty(account)) {
-                Toast.makeText(EditAcountActivity.this, "账号不能为空", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditAccountActivity.this, "账号不能为空", Toast.LENGTH_SHORT).show();
                 return;
             }
 

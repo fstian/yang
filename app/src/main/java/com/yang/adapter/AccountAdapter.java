@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.yang.R;
+import com.R;
 import com.yang.entity.Account;
 
 import java.util.List;

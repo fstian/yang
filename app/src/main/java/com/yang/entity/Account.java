@@ -2,11 +2,12 @@ package com.yang.entity;
 
 
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity()
+@Entity(indices = {@Index(value={"uuid"},unique = true)})
 public class Account {
-
+//主键于业务无光
     @PrimaryKey(autoGenerate = true)
     private long id_;
 

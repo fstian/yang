@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.yang.R;
+import com.R;
 import com.yang.entity.AccountItem;
 
 import java.util.List;

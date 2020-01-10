@@ -1,0 +1,55 @@
+package com.kt.activity
+
+import android.os.Bundle
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
+import com.R
+import com.kt.viewmodel.CommonViewModel
+
+abstract class BaseKtActivity : AppCompatActivity() {
+
+    var toolbar: Toolbar? = null;
+
+    val commonViewModel : CommonViewModel by lazy {
+        ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(CommonViewModel::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(getLayoutId())
+        toolbar = findViewById<Toolbar>(R.id.account_tool)
+
+        initToolbar()
+
+        initViews()
+    }
+
+    abstract fun initViews()
+
+    private fun initToolbar() {
+        setSupportActionBar(toolbar)
+        if(getToolbarMenuId()!=0){
+            toolbar!!.inflateMenu(getToolbarMenuId())
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        if(getToolbarMenuId()!=0){
+            menuInflater.inflate(getToolbarMenuId(),menu)
+            return true
+        }
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    abstract fun getLayoutId(): Int
+
+
+    abstract fun getToolbarMenuId(): Int
+
+
+}

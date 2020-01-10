@@ -1,6 +1,9 @@
 package com.yang.utils;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -41,14 +44,37 @@ public class ThreadPoolUtils {
      * 执行任务
      */
     public void execute(Runnable runnable){
-        if(runnable==null)return;
+        if(runnable==null){
+            return;
+        }
         executor.execute(runnable);
     }
     /**
      * 从线程池中移除任务
      */
     public void remove(Runnable runnable){
-        if(runnable==null)return;
+        if(runnable==null){
+            return;
+        }
         executor.remove(runnable);
     }
+
+
+
+    public boolean submit(Callable callable) throws ExecutionException, InterruptedException {
+        if(callable==null){
+            return false;
+        }
+        Future<Boolean> future = executor.submit(callable);
+
+        if (future.isDone()) {
+        }
+
+        return future.get();
+
+
+    }
+
+
+
 }

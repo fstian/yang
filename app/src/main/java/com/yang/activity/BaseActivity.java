@@ -3,7 +3,7 @@ package com.yang.activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.yang.R;
+import com.R;
 import com.yang.net.CommonService;
 import com.yang.net.RetrofitManager;
 
@@ -24,7 +24,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         setContentView(getLayoutId());
 

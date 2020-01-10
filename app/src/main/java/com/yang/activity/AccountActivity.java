@@ -1,14 +1,20 @@
 package com.yang.activity;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.LruCache;
 
-import com.yang.R;
+
+import com.R;
 import com.yang.adapter.AccountAdapter;
 import com.yang.entity.Account;
 import com.yang.viewmodel.AccountViewModel;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import kotlinx.coroutines.GlobalScope;
 
 public class AccountActivity extends BaseActivity {
 
@@ -46,22 +53,19 @@ public class AccountActivity extends BaseActivity {
         mAccountViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(AccountViewModel.class);
 
 
-
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        mAccountViewModel.getAccountList().observe(this,mAccountObserver);
+        mAccountViewModel.getAccountList().observe(this, mAccountObserver);
 
     }
 
     @Override
     protected void initData() {
-
         initRecyclerView();
-
 
     }
 
@@ -73,23 +77,23 @@ public class AccountActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAccountAdapter);
 
-
     }
 
 
-    private Observer<List<Account>> mAccountObserver=new Observer<List<Account>>() {
+    private Observer<List<Account>> mAccountObserver = new Observer<List<Account>>() {
         @Override
         public void onChanged(List<Account> account) {
 
-            Log.i(TAG, "onChanged: "+account);
+            Log.i(TAG, "onChanged: " + account);
             mAccountAdapter.setListAndNotifyDataSetChanged(account);
 
         }
     };
 
-    private Toolbar.OnMenuItemClickListener mOnMenuItemClickListener= item -> {
+    private Toolbar.OnMenuItemClickListener mOnMenuItemClickListener = item -> {
         switch (item.getItemId()) {
             case R.id.action_add:
+                startActivity(new Intent(AccountActivity.this,EditAccountActivity.class));
                 break;
             case R.id.action_search:
                 break;
@@ -97,7 +101,6 @@ public class AccountActivity extends BaseActivity {
         }
         return false;
     };
-
 
 
 }

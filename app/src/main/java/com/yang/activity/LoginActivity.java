@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.yang.R;
+import com.R;
 import com.yang.db.AccountDao;
 import com.yang.db.AccountDatsbase;
 import com.yang.entity.Account;

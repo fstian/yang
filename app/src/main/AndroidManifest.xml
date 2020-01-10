@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yang">
+          package="com">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -12,10 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!-- <activity android:name=".activity.AccountActivity"> -->
-        <!-- </activity> -->
-        <activity android:name=".activity.EditAcountActivity">
+        <!--<activity android:name=".kt.activity.AccountKtActivity">-->
+        <!--</activity>-->
+        <activity android:name=".kt.activity.AccountKtActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

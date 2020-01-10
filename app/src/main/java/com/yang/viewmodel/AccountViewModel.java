@@ -9,6 +9,7 @@ import com.yang.entity.Account;
 import com.yang.utils.ThreadPoolUtils;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -25,14 +26,26 @@ public class AccountViewModel extends AndroidViewModel {
     }
 
     public void insert(Account account){
-        ThreadPoolUtils.getInstance().execute(new Runnable() {
+        Callable callable = new Callable<Boolean>() {
             @Override
-            public void run() {
-                mAcountDao.insertAll(account);
+            public Boolean call() throws Exception {
+                while (true) {
+                    try {
+                        mAcountDao.insertAll(account);
+                        return true;
+                    }catch (Exception e){
+                        return false;
+                    }
+
+                }
+
             }
-        });
+        };
 
     }
+
+
+
 
 
     public LiveData<List<Account>> getAccountList(){
