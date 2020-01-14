@@ -15,10 +15,10 @@ interface AccountDao{
      fun getAll(): LiveData<List<Account>>
 
     @Insert
-    suspend fun insertAll(vararg users: User)
+     fun insertAll(vararg accounts: Account)
 
     @Insert
-    suspend fun insert(user: User)
+     fun insert(account: Account)
 
 
 }

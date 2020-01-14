@@ -1,25 +1,29 @@
 package com.kt.viewmodel
 
+import android.app.Application
 import android.content.Context
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.kt.TAG
 import com.kt.db.AccountDao
 import com.kt.db.AppDatabase
 import com.kt.model.Account
 import com.kt.model.BaseResult
 import com.kt.model.User
 import com.kt.net.RetrofitClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.lang.Exception
 
-class CommonViewModel(context: Context) : ViewModel() {
+class ApplicationViewModel constructor(application: Application) : AndroidViewModel(application) {
 
-    var context: Context
+
+    var context: Application = application
     var accountDao: AccountDao
 
     init {
-        this.context = context
+
         accountDao = AppDatabase.getInstance(context).accountDao()
 
     }
@@ -32,13 +36,11 @@ class CommonViewModel(context: Context) : ViewModel() {
         return accountDao.getAll()
     }
 
+    fun test(): AccountDao = accountDao
 
-    fun inserAll( users: User){
 
-        var job = GlobalScope.launch(Dispatchers.IO) {
-            accountDao.insertAll(users)
-        }
-
+    fun insert(account: Account) {
+        accountDao.insert(account)
 
     }
 }

@@ -1,19 +1,23 @@
 package com.kt.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.content.Intent
 import android.util.Log
+import android.view.MenuItem
+import android.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.R
+import com.kt.adapter.AccountKtAdapter
+import com.yang.adapter.AccountAdapter
+import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.coroutines.*
-import okhttp3.Dispatcher
-import kotlin.coroutines.CoroutineContext
 
 class AccountKtActivity : BaseKtActivity() {
 
 
     override fun initViews() {
 
-        var ui = CoroutineScope(Dispatchers.Main)
+        var ui = CoroutineScope(Dispatchers.IO)
 
         ui.launch {
             Log.i(com.kt.TAG, "1" + Thread.currentThread().toString())
@@ -33,9 +37,64 @@ class AccountKtActivity : BaseKtActivity() {
             Log.i(com.kt.TAG, "5" + "task1" + task1.await() + "     " + task2.await())
 
 
+        }
+
+        applicationViewModel.getAll().observe(this, Observer {
+            var size = it.size
+
+            account_recycle.layoutManager = LinearLayoutManager(this)
+
+            account_recycle.adapter = AccountKtAdapter(this, it)
+
+
+        })
+
+
+        toolbar?.setOnMenuItemClickListener { item ->
+
+            when (item.itemId) {
+                R.id.action_add -> {
+                    startActivity(Intent(this, EditAccountKtActivity::class.java))
+                }
+                R.id.action_search -> {
+                }
+            }
+
+            return@setOnMenuItemClickListener false
 
         }
 
+
+        ui.launch {
+
+            withContext(Dispatchers.IO) {
+                for (x in 0..99) {
+                    try {
+                        var account = "account" + x
+                        val uuid = account + System.currentTimeMillis()
+//                       applicationViewModel.insert(Account("type","dept",account,"pwd","des",uuid))
+
+                        Log.i(com.kt.TAG, "length" + x)
+                        delay(100)
+                    } catch (e: Throwable) {
+                        Log.i(com.kt.TAG, "length" + e.message)
+
+
+                    }
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.i(com.kt.TAG, "length_onstop")
 
     }
 
@@ -44,10 +103,9 @@ class AccountKtActivity : BaseKtActivity() {
     override fun getToolbarMenuId(): Int = R.menu.toolbar_menu
 
 
-    fun test() {
-
-
-    }
 
 
 }
+
+
+

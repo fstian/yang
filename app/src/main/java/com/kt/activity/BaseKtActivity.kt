@@ -5,15 +5,20 @@ import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.R
-import com.kt.viewmodel.CommonViewModel
+import com.kt.viewmodel.ApplicationViewModel
 
 abstract class BaseKtActivity : AppCompatActivity() {
 
     var toolbar: Toolbar? = null;
 
-    val commonViewModel : CommonViewModel by lazy {
-        ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(CommonViewModel::class.java)
+    val applicationViewModel : ApplicationViewModel by lazy {
+        ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(ApplicationViewModel::class.java)
+
+        ViewModelProviders.of(this).get(ApplicationViewModel::class.java)
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

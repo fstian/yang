@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SQLAndroidSettings">
+    <option name="databases">
+      <map>
+        <entry key="tt_D:\yangtian\yang\AndroidSqlEditorDatabases\">
+          <value>
+            <list>
+              <option value="2019082200005" />
+              <option value="/databases/account.db" />
+              <option value="tt" />
+              <option value="tt" />
+              <option value="false" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="packageNameByDirectory">
       <map>
         <entry key="D:\yangtian\yang\AndroidSqlEditorDatabases\" value="com.yang" />

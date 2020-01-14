@@ -11,11 +11,11 @@ data class Account(
         val dept: String,
         val account: String,
         val pwd: String,
-        val des: String) {
+        val des: String,
+        val uuid:String) {
 
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0
+    var id: Int =0
 
-    val uuid: String = account + System.currentTimeMillis()
 
 }

@@ -21,7 +21,7 @@ class LoginKtActivity : BaseKtActivity() {
                 return@setOnClickListener
             }
 
-            commonViewModel.getLoginResult(User(account, pwd)).observe(this, Observer {
+            applicationViewModel.getLoginResult(User(account, pwd)).observe(this, Observer {
 
                 if (it.code == 200) {
                     val intent = Intent(this@LoginKtActivity, AccountKtActivity::class.java)
