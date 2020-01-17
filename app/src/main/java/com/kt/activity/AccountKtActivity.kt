@@ -2,13 +2,10 @@ package com.kt.activity
 
 import android.content.Intent
 import android.util.Log
-import android.view.MenuItem
-import android.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.R
 import com.kt.adapter.AccountKtAdapter
-import com.yang.adapter.AccountAdapter
 import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.coroutines.*
 
@@ -64,30 +61,6 @@ class AccountKtActivity : BaseKtActivity() {
 
         }
 
-
-        ui.launch {
-
-            withContext(Dispatchers.IO) {
-                for (x in 0..99) {
-                    try {
-                        var account = "account" + x
-                        val uuid = account + System.currentTimeMillis()
-//                       applicationViewModel.insert(Account("type","dept",account,"pwd","des",uuid))
-
-                        Log.i(com.kt.TAG, "length" + x)
-                        delay(100)
-                    } catch (e: Throwable) {
-                        Log.i(com.kt.TAG, "length" + e.message)
-
-
-                    }
-
-                }
-
-            }
-
-
-        }
 
     }
 

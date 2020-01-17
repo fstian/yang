@@ -22,10 +22,11 @@ class LoginKtActivity : BaseKtActivity() {
             }
 
             applicationViewModel.getLoginResult(User(account, pwd)).observe(this, Observer {
-
                 if (it.code == 200) {
                     val intent = Intent(this@LoginKtActivity, AccountKtActivity::class.java)
                     startActivity(intent)
+                }else{
+                    toast(it.msg)
                 }
 
             })

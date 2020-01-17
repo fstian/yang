@@ -2,6 +2,7 @@ package com.kt.activity
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +17,7 @@ abstract class BaseKtActivity : AppCompatActivity() {
     val applicationViewModel : ApplicationViewModel by lazy {
         ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(ApplicationViewModel::class.java)
 
-        ViewModelProviders.of(this).get(ApplicationViewModel::class.java)
+//        ViewModelProviders.of(this).get(ApplicationViewModel::class.java)
 
 
     }
@@ -56,5 +57,10 @@ abstract class BaseKtActivity : AppCompatActivity() {
 
     abstract fun getToolbarMenuId(): Int
 
+
+    fun toast(toast: String){
+
+        Toast.makeText(this,toast,Toast.LENGTH_SHORT).show()
+    }
 
 }

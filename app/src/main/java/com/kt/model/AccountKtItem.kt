@@ -1,3 +1,3 @@
 package com.kt.model
 
-data class AccountKtItem(val key:String,val value:String)
+data class AccountKtItem(val key:String, var value:String)
